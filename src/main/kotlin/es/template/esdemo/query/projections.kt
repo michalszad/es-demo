@@ -1,10 +1,10 @@
 package es.template.esdemo.query
 
-import es.template.domain.Event
+
+import es.template.esdemo.domain.Event
 import es.template.esdemo.domain.Payment
 import es.template.esdemo.domain.PaymentCompletedEvent
 import es.template.esdemo.domain.PaymentCreatedEvent
-import es.template.esdemo.domain.PaymentEvent
 import es.template.esdemo.domain.PaymentInitializedEvent
 
 interface Projection
@@ -44,8 +44,7 @@ class PaymentProjection : Projection {
             is PaymentInitializedEvent -> on(event)
             is PaymentCompletedEvent -> on(event)
             else -> {
-                println("Omitted event")
-                // Omit other events
+                // Omit event
             }
         }
     }

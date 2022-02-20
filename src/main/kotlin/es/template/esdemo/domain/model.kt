@@ -1,4 +1,6 @@
-package es.template.domain
+package es.template.esdemo.domain
+
+import java.util.UUID
 
 interface Message
 
@@ -17,9 +19,32 @@ abstract class Aggregate(val type: String, val id: String)
 data class PaymentAggregate(val identifier: String) : Aggregate(AGGREGATE_TYPE, identifier) {
     companion object {
         const val AGGREGATE_TYPE = "Payment"
+    }
+}
+
+
+data class IdempotencyToken(
+    val paymentId: String,
+    val paymentOperationId: String
+) {
+    override fun toString() = "$paymentId-$paymentOperationId"
+
+    companion object {
+        @JvmStatic
+        private val REGEX = """(\d+)-(\d+)""".toRegex()
 
         @JvmStatic
-        fun from(paymentId: Long) = PaymentAggregate(paymentId.toString())
+        fun random() = IdempotencyToken(UUID.randomUUID().toString(), UUID.randomUUID().toString())
+
+        @JvmStatic
+        fun from(value: String) =
+            if (REGEX.matches(value)) {
+                val matchResult = REGEX.find(value)
+                val (paymentId, paymentOperationId) = matchResult!!.destructured
+                IdempotencyToken(paymentId, paymentOperationId)
+            } else {
+                throw IllegalArgumentException("Idempotency token cannot be built from String: $value")
+            }
     }
 }
 

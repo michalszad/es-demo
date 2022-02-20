@@ -1,11 +1,12 @@
 package es.template.esdemo.adapters.handlers
 
 import es.template.domain.AggregateRepository
-import es.template.domain.InitializePaymentCommand
 
-import es.template.domain.PaymentCommand
+
 import es.template.domain.PaymentExternalService
+import es.template.esdemo.domain.InitializePaymentCommand
 import es.template.esdemo.domain.Payment
+import es.template.esdemo.domain.PaymentCommand
 
 class InitializeCommandHandler(
     private val paymentRepository: AggregateRepository<Payment>,
@@ -16,7 +17,7 @@ class InitializeCommandHandler(
         command as InitializePaymentCommand
 
         val payment = paymentRepository.findById(command.id) ?: paymentRepository.create()
-        payment.initialize(command) // plus dependencies
+        payment.initialize()
         paymentRepository.store(payment)
     }
 }

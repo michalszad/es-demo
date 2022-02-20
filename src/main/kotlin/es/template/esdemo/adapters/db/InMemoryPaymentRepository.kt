@@ -1,8 +1,8 @@
 package es.template.esdemo.adapters.db
 
 import es.template.domain.AggregateRepository
-import es.template.domain.PaymentAggregate
 import es.template.esdemo.domain.Payment
+import es.template.esdemo.domain.PaymentAggregate
 
 
 import es.template.esdemo.domain.PaymentEvent

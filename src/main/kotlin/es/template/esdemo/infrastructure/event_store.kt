@@ -1,7 +1,8 @@
 package es.template.esdemo.infrastructure
 
-import es.template.domain.Aggregate
-import es.template.domain.Event
+import es.template.esdemo.domain.Aggregate
+import es.template.esdemo.domain.Event
+
 
 interface EventStore {
     fun store(aggregate: Aggregate, event: Event)

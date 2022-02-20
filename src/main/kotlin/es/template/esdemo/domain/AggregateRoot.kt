@@ -1,6 +1,4 @@
-package es.template.domain.approach2
-
-import es.template.domain.Event
+package es.template.esdemo.domain
 
 abstract class AggregateRoot<E : Event> {
 
