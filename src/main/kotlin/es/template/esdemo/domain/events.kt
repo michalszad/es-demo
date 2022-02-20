@@ -5,7 +5,6 @@ import java.time.Instant
 
 sealed class PaymentEvent : Event {
     val created = Instant.now()
-//    abstract val idempotencyToken: IdempotencyToken
     abstract val paymentId: String
 }
 

@@ -20,14 +20,14 @@ class Payment : AggregateRoot<PaymentEvent>() {
 
     companion object {
 
-        fun create(description: String): Payment {
+        fun create(paymentId: String, description: String): Payment {
             val payment = Payment()
             val event = PaymentCreatedEvent(
-                paymentId = UUID.randomUUID().toString(),
+                paymentId = paymentId,
                 description = description
             )
             payment.applyEvent(event)
-            return payment;
+            return payment
         }
     }
 

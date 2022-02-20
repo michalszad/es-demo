@@ -1,19 +1,17 @@
 package es.template.esdemo.adapters.api
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import es.template.esdemo.domain.CompletePaymentCommand
-import es.template.esdemo.domain.CreatePaymentCommand
-import es.template.esdemo.domain.InitializePaymentCommand
-import es.template.esdemo.query.ErrorResult
-import es.template.esdemo.query.Result
-import es.template.esdemo.query.SuccessResult
+import es.template.esdemo.adapters.handlers.CompletePaymentCommand
+import es.template.esdemo.adapters.handlers.CreatePaymentCommand
+import es.template.esdemo.adapters.handlers.InitializePaymentCommand
+import java.util.UUID
 
 // Validation could be added here, or in specific resource
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CreateRequest {
     var description: String? = null
 
-    fun toCommand() = CreatePaymentCommand(description = description!!)
+    fun toCommand() = CreatePaymentCommand(paymentId = UUID.randomUUID().toString(), description = description!!)
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)

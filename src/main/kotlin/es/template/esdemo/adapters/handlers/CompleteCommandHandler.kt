@@ -1,10 +1,8 @@
 package es.template.esdemo.adapters.handlers
 
-import es.template.domain.AggregateRepository
-import es.template.esdemo.domain.CompletePaymentCommand
+import es.template.esdemo.domain.AggregateRepository
 
 import es.template.esdemo.domain.Payment
-import es.template.esdemo.domain.PaymentCommand
 
 class CompleteCommandHandler(private val paymentRepository: AggregateRepository<Payment>) : CommandHandler<PaymentCommand> {
 

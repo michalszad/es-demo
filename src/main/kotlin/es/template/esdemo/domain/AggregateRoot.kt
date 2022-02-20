@@ -2,11 +2,11 @@ package es.template.esdemo.domain
 
 abstract class AggregateRoot<E : Event> {
 
-    private val events = mutableListOf<E>()
+    private val changes = mutableListOf<E>()
 
     fun pullChanges(): List<E> {
-        val changes = events.toList()
-        events.clear()
+        val changes = changes.toList()
+        this.changes.clear()
         return changes
     }
 
@@ -27,6 +27,6 @@ abstract class AggregateRoot<E : Event> {
     protected abstract fun rehydrate(event: E)
 
     private fun add(event: E) {
-        events.add(event)
+        changes.add(event)
     }
 }

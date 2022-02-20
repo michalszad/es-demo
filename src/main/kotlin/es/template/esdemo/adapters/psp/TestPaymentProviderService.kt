@@ -1,6 +1,6 @@
 package es.template.esdemo.adapters.psp
 
-import es.template.domain.PaymentExternalService
+import es.template.esdemo.domain.PaymentExternalService
 
 class TestPaymentProviderService : PaymentExternalService {
 }

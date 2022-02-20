@@ -1,4 +1,4 @@
-package es.template.domain
+package es.template.esdemo.domain
 
 interface AggregateRepository<T> {
     fun findById(id: String): T?

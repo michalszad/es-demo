@@ -5,9 +5,9 @@ import es.template.esdemo.adapters.handlers.CommandHandler
 import es.template.esdemo.adapters.handlers.CompleteCommandHandler
 import es.template.esdemo.adapters.handlers.CreateCommandHandler
 import es.template.esdemo.adapters.handlers.InitializeCommandHandler
+import es.template.esdemo.adapters.handlers.PaymentCommand
 import es.template.esdemo.adapters.handlers.PaymentCommands
 import es.template.esdemo.adapters.psp.TestPaymentProviderService
-import es.template.esdemo.domain.PaymentCommand
 import es.template.esdemo.infrastructure.InMemoryBasedEventStore
 import es.template.esdemo.query.ProjectionsBasedQueries
 import es.template.esdemo.query.Query

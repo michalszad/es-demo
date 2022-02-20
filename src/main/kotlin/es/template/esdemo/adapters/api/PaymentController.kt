@@ -1,8 +1,8 @@
 package es.template.esdemo.adapters.api
 
 import es.template.esdemo.adapters.handlers.CommandHandler
+import es.template.esdemo.adapters.handlers.PaymentCommand
 import es.template.esdemo.adapters.handlers.PaymentCommands
-import es.template.esdemo.domain.PaymentCommand
 import es.template.esdemo.query.ErrorResult
 import es.template.esdemo.query.Query
 import es.template.esdemo.query.Result
@@ -22,8 +22,9 @@ class PaymentController(
 
     @PostMapping("/create-payment/v1")
     fun create(@RequestBody request: CreateRequest): ResponseEntity<PaymentResponse> {
-        paymentHandlers[PaymentCommands.CREATE]!!.handle(request.toCommand())
-        val result = paymentQuery.getPaymentResult("hmmm")
+        val createCommand = request.toCommand()
+        paymentHandlers[PaymentCommands.CREATE]!!.handle(createCommand)
+        val result = paymentQuery.getPaymentResult(createCommand.paymentId)
         return ResponseEntity.ok(result.toPaymentResponse())
     }
 

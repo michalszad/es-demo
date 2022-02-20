@@ -19,7 +19,7 @@ class InMemoryBasedEventStore : EventStore {
         if (eventStream.isNullOrEmpty()) {
             inMemoryDb[aggregate.id] = listOf(event)
         } else {
-            inMemoryDb[aggregate.id] = eventStream + event
+            inMemoryDb[aggregate.id] = eventStream.plus(event)
         }
     }
 
