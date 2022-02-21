@@ -20,6 +20,7 @@ class Payment : AggregateRoot<PaymentEvent>() {
 
     companion object {
 
+        @JvmStatic
         fun create(paymentId: String, description: String): Payment {
             val payment = Payment()
             val event = PaymentCreatedEvent(
